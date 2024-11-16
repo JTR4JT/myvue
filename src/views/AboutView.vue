@@ -1,12 +1,18 @@
 <template>
   <div>
-    <h1 style="text-align: center;">项目管理</h1>
-  <el-table
+    <div style="height: 10%;">
+    <h1 style="text-align: center;height: 20px;">项目管理</h1>
+    </div>
+    
+ 
+    <div class="tableStyle">
+      <el-table
   ref="tab"
   id="boxed"
     :data="tableData"
-    height="250"
+    height="100%"
     border
+    :header-cell-style="{fontSize: '14px', backgroundColor: '#f8f8f8',color:'#333'}"
     style="width: 100%">
     <el-table-column
       prop="date"
@@ -23,6 +29,7 @@
       label="地址">
     </el-table-column>
   </el-table>
+    </div>
   </div>
 </template>
 
@@ -44,54 +51,111 @@ var rolltimer ;
         this.autoRoll()
     })
 },
+created () {
+  this.tableHeight = window.innerHeight - 100
+  
+    },
 destroyed() {
     this.autoRoll('stop')
 },
     data() {
       return {
+        tableHeight:'' ,
         tableData: [{
           date: '2016-05-03',
-          name: '王小虎',
+          name: '1',
           address: '上海市普陀区金沙江路 1518 弄'
         }, {
           date: '2016-05-02',
-          name: '王小虎',
+          name: '2',
           address: '上海市普陀区金沙江路 1518 弄'
         }, {
           date: '2016-05-04',
-          name: '王小虎',
+          name: '3',
           address: '上海市普陀区金沙江路 1518 弄'
         }, {
           date: '2016-05-01',
-          name: '王小虎',
+          name: '4',
           address: '上海市普陀区金沙江路 1518 弄'
         }, {
           date: '2016-05-08',
-          name: '王小虎',
+          name: '5',
           address: '上海市普陀区金沙江路 1518 弄'
         }, {
           date: '2016-05-06',
-          name: '王小虎',
+          name: '6',
           address: '上海市普陀区金沙江路 1518 弄'
         }, {
           date: '2016-05-07',
-          name: '王小虎',
+          name: '7',
           address: '上海市普陀区金沙江路 1518 弄'
         }, {
           date: '2016-05-02',
-          name: '王小虎',
+          name: '8',
           province: '上海',
           city: '普陀区',
           address: '上海市普陀区金沙江路 1518 弄',
           zip: 200333
         }, {
           date: '2016-05-04',
-          name: '王小虎',
+          name: '9',
           province: '上海',
           city: '普陀区',
           address: '上海市普陀区金沙江路 1518 弄',
           zip: 200333
-        }, ]
+        }, {
+          date: '2016-05-02',
+          name: '8',
+          province: '上海',
+          city: '普陀区',
+          address: '上海市普陀区金沙江路 1518 弄',
+          zip: 200333
+        }, {
+          date: '2016-05-04',
+          name: '9',
+          province: '上海',
+          city: '普陀区',
+          address: '上海市普陀区金沙江路 1518 弄',
+          zip: 200333
+        }, {
+          date: '2016-05-02',
+          name: '8',
+          province: '上海',
+          city: '普陀区',
+          address: '上海市普陀区金沙江路 1518 弄',
+          zip: 200333
+        }, {
+          date: '2016-05-04',
+          name: '9',
+          province: '上海',
+          city: '普陀区',
+          address: '上海市普陀区金沙江路 1518 弄',
+          zip: 200333
+        }, {
+          date: '2016-05-01',
+          name: '4',
+          address: '上海市普陀区金沙江路 1518 弄'
+        }, {
+          date: '2016-05-08',
+          name: '5',
+          address: '上海市普陀区金沙江路 1518 弄'
+        }, , {
+          date: '2016-05-01',
+          name: '4',
+          address: '上海市普陀区金沙江路 1518 弄'
+        }, {
+          date: '2016-05-08',
+          name: '5',
+          address: '上海市普陀区金沙江路 1518 弄'
+        }, , {
+          date: '2016-05-01',
+          name: '4',
+          address: '上海市普陀区金沙江路 1518 弄'
+        }, {
+          date: '2016-05-08',
+          name: '5',
+          address: '上海市普陀区金沙江路 1518 弄'
+        },  ]
       }
     },
     methods:{
@@ -106,8 +170,9 @@ destroyed() {
   rolltimer = setInterval(() => {
     // + 4 是每秒向下滑动 4个像素  这块可以自己更改
     divData.scrollTop += 4
+    console.log(divData.scrollTop)
     // 下方判断是滑动到底部就会自己回到最上方重新开始滑动  改动像素的话 一定要满足进入这个判断  否则滚动到底部就停了
-    if (divData.clientHeight + divData.scrollTop == divData.scrollHeight) {
+    if (divData.clientHeight + divData.scrollTop >= divData.scrollHeight-10) {
       divData.scrollTop = 0
     }
   }, 100)
@@ -115,3 +180,26 @@ destroyed() {
     }
   }
 </script>
+
+<style scoped>
+
+.tableStyle
+{
+  position: absolute;
+  width: 99%;
+  height: 90%;
+  background-color: aqua;
+}
+
+.el-table .warning-row {
+  background: #31a354;
+}
+.el-table .success-row {
+  background: #f0f9eb;
+}
+
+.tableStyle>>>.el-table_1_column_3 
+{
+  color: #31a354 ;
+}
+</style>

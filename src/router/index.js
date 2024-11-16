@@ -3,6 +3,9 @@ import VueRouter from 'vue-router'
 import HomeView from '../views/HomeView.vue'
 import test from "../views/test.vue"
 import test2 from "../views/test2.vue"
+import test3 from "../views/test3.vue"
+import kb from "../views/kb.vue"
+import lbb from "../views/lbb.vue"
 
 Vue.use(VueRouter)
 
@@ -12,6 +15,7 @@ const routes = [
     name: 'home',
     component: HomeView
   },
+  
   {
     path: '/about',
     name: 'about',
@@ -26,9 +30,24 @@ const routes = [
     component: test
   },
   {
+    path: '/lbb',
+    name: 'lbb',
+    component: lbb
+  },
+  {
     path: '/test2',
     name: 'test2',
     component: test2
+  },
+  {
+    path: '/test3',
+    name: 'test3',
+    component: test3
+  },
+  {
+    path: '/kb',
+    name: 'kb',
+    component: kb
   }
 ]
 
